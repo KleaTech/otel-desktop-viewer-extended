@@ -56415,7 +56415,7 @@ otel-cli exec --service my-service --name "curl google" curl https://google.com
       orderedSpans,
       traceTimeAttributes,
       spanNameColumnWidth,
-      serviceNameColumnWidth,
+      contextColumnWidth,
       selectedSpanID,
       setSelectedSpanID
     } = data;
@@ -56428,6 +56428,7 @@ otel-cli exec --service my-service --name "curl google" curl https://google.com
         backgroundColour = selectedColour;
       }
       let nameLabel = spanData.name.replaceAll("/", "/\u200B").replaceAll("-", "-\u200B").replaceAll(".", ".\u200B");
+      console.log(spanData.name, span);
       let resourceLabel = spanData.resource.attributes["service.name"];
       return /* @__PURE__ */ import_react184.default.createElement(Flex, {
         style,
@@ -56444,7 +56445,7 @@ otel-cli exec --service my-service --name "curl google" curl https://google.com
         noOfLines: 2,
         fontSize: "sm"
       }, nameLabel)), /* @__PURE__ */ import_react184.default.createElement(Flex, {
-        width: serviceNameColumnWidth,
+        width: contextColumnWidth,
         alignItems: "center",
         flexGrow: "1",
         flexShrink: "0"
@@ -56527,7 +56528,7 @@ otel-cli exec --service my-service --name "curl google" curl https://google.com
     let {
       headerRowHeight,
       spanNameColumnWidth,
-      serviceNameColumnWidth,
+      contextColumnWidth,
       traceDuration
     } = props;
     return /* @__PURE__ */ import_react186.default.createElement(Flex, {
@@ -56539,12 +56540,12 @@ otel-cli exec --service my-service --name "curl google" curl https://google.com
       paddingX: 2,
       size: "sm"
     }, "name")), /* @__PURE__ */ import_react186.default.createElement(Flex, {
-      width: serviceNameColumnWidth,
+      width: contextColumnWidth,
       alignItems: "center"
     }, /* @__PURE__ */ import_react186.default.createElement(Heading, {
       paddingX: 1,
       size: "sm"
-    }, "service.name")), /* @__PURE__ */ import_react186.default.createElement(DurationIndicator, {
+    }, "context")), /* @__PURE__ */ import_react186.default.createElement(DurationIndicator, {
       traceDuration
     }));
   }
@@ -56557,7 +56558,7 @@ otel-cli exec --service my-service --name "curl google" curl https://google.com
     const waterfallItemHeight = 50;
     const headerRowHeight = 30;
     const spanNameColumnWidth = 300;
-    const serviceNameColumnWidth = 200;
+    const contextColumnWidth = 200;
     let { orderedSpans, traceTimeAttributes, selectedSpanID, setSelectedSpanID } = props;
     let prevSpanKeyPressed = useKeyPress(["ArrowUp", "k"]);
     let nextSpanKeyPressed = useKeyPress(["ArrowDown", "j"]);
@@ -56593,7 +56594,7 @@ otel-cli exec --service my-service --name "curl google" curl https://google.com
       orderedSpans,
       traceTimeAttributes,
       spanNameColumnWidth,
-      serviceNameColumnWidth,
+      contextColumnWidth,
       selectedSpanID,
       setSelectedSpanID
     };
@@ -56605,7 +56606,7 @@ otel-cli exec --service my-service --name "curl google" curl https://google.com
     }, /* @__PURE__ */ import_react188.default.createElement(HeaderRow, {
       headerRowHeight,
       spanNameColumnWidth,
-      serviceNameColumnWidth,
+      contextColumnWidth,
       traceDuration: traceTimeAttributes.traceDurationNS
     }), /* @__PURE__ */ import_react188.default.createElement(FixedSizeList, {
       className: "List",

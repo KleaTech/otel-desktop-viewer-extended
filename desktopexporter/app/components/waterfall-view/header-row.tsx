@@ -82,7 +82,7 @@ function DurationIndicator(props: DurationIndicatorProps) {
 type HeaderRowProps = {
   headerRowHeight: number;
   spanNameColumnWidth: number;
-  serviceNameColumnWidth: number;
+  contextColumnWidth: number;
   traceDuration: number;
 };
 
@@ -90,7 +90,7 @@ export function HeaderRow(props: HeaderRowProps) {
   let {
     headerRowHeight,
     spanNameColumnWidth,
-    serviceNameColumnWidth,
+    contextColumnWidth,
     traceDuration,
   } = props;
 
@@ -108,14 +108,14 @@ export function HeaderRow(props: HeaderRowProps) {
         </Heading>
       </Flex>
       <Flex
-        width={serviceNameColumnWidth}
+        width={contextColumnWidth}
         alignItems="center"
       >
         <Heading
           paddingX={1}
           size="sm"
         >
-          service.name
+          context
         </Heading>
       </Flex>
       <DurationIndicator traceDuration={traceDuration} />

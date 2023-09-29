@@ -24,7 +24,7 @@ export function WaterfallView(props: WaterfallViewProps) {
   const waterfallItemHeight = 50;
   const headerRowHeight = 30;
   const spanNameColumnWidth = 300;
-  const serviceNameColumnWidth = 200;
+  const contextColumnWidth = 200;
 
   let { orderedSpans, traceTimeAttributes, selectedSpanID, setSelectedSpanID } =
     props;
@@ -70,7 +70,7 @@ export function WaterfallView(props: WaterfallViewProps) {
     orderedSpans,
     traceTimeAttributes,
     spanNameColumnWidth,
-    serviceNameColumnWidth,
+    contextColumnWidth,
     selectedSpanID,
     setSelectedSpanID,
   };
@@ -85,7 +85,7 @@ export function WaterfallView(props: WaterfallViewProps) {
       <HeaderRow
         headerRowHeight={headerRowHeight}
         spanNameColumnWidth={spanNameColumnWidth}
-        serviceNameColumnWidth={serviceNameColumnWidth}
+        contextColumnWidth={contextColumnWidth}
         traceDuration={traceTimeAttributes.traceDurationNS}
       />
       <FixedSizeList

@@ -10,7 +10,7 @@ type WaterfallRowData = {
   orderedSpans: SpanWithUIData[];
   traceTimeAttributes: TraceTiming;
   spanNameColumnWidth: number;
-  serviceNameColumnWidth: number;
+  contextColumnWidth: number;
   selectedSpanID: string | undefined;
   setSelectedSpanID: (spanID: string) => void;
 };
@@ -31,7 +31,7 @@ export function WaterfallRow({ index, style, data }: WaterfallRowProps) {
     orderedSpans,
     traceTimeAttributes,
     spanNameColumnWidth,
-    serviceNameColumnWidth,
+    contextColumnWidth,
     selectedSpanID,
     setSelectedSpanID,
   } = data;
@@ -56,7 +56,7 @@ export function WaterfallRow({ index, style, data }: WaterfallRowProps) {
       .replaceAll("-", "-\u200B")
       .replaceAll(".", ".\u200B");
 
-    let resourceLabel = spanData.resource.attributes["service.name"];
+    let attributes = JSON.stringify(spanData.attributes);
 
     return (
       <Flex
@@ -80,7 +80,7 @@ export function WaterfallRow({ index, style, data }: WaterfallRowProps) {
           </Text>
         </Flex>
         <Flex
-          width={serviceNameColumnWidth}
+          width={contextColumnWidth}
           alignItems="center"
           flexGrow="1"
           flexShrink="0"
@@ -89,7 +89,7 @@ export function WaterfallRow({ index, style, data }: WaterfallRowProps) {
             paddingX={2}
             fontSize="sm"
           >
-            {resourceLabel}
+            {attributes}
           </Text>
         </Flex>
         <DurationBar
